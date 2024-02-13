@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      args:
+        - MODE=${MODE}
+    volumes:
+      - logs_volume:/app/logs
+    command: >
+      sh -c "if [ '$MODE' = 'TEST' ]; then
+               echo 'Running in test mode' && pytest;
+             else
+               echo 'Running in production mode' && python main.py;
+             fi"
+
+
+volumes:
+  logs_volume:
