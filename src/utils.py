@@ -35,8 +35,7 @@ def read_words_from_file_to_set(file_path) -> Set:
     """Чтение всех слов из файла и преобразование их в множество."""
     with open(file_path, 'r', encoding='utf-8') as file:
         text = file.read()
-    words = set(text.lower().translate(str.maketrans('', '', ',.!?')).split())
-    return words
+    return set(text.lower().split())
 
 
 def validate_convert_args(args: List) -> Tuple[float, str, str]:
